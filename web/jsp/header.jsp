@@ -6,7 +6,7 @@
         <title>Header Page</title>
     </head>
     <body>
-        <img src="../images/online book store.jpg" width="225" height="125" alt="online book store"/>
+        <img src="./images/online book store.jpg" width="225" height="125" alt="online book store"/>
 
     </body>
 </html>
