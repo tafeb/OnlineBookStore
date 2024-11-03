@@ -9,6 +9,10 @@
     <%@ page import="java.util.*"%>
     <%@ page import="java.text.*"%>
     
+    <div>
+        <jsp:include page="header.jsp" />  
+    </div>
+    
     <body bgcolor="#FFFFFF" text="#000000">
         <p>
         </p>
@@ -50,10 +54,7 @@
     </table>
     <p>&nbsp;</p><p>&nbsp;</p>
     <p>&nbsp;</p><hr>
-    <div>
-       <jsp:include page="header.jsp" />
-      
-    </div>
+    
     <form name="form1" method="post" action="./books">
         <input type="hidden" name="action" value="add_to_cart">
         <table width="93%" border="2" cellspacing="0" cellpadding="1" bordercolor="#FFFFFF">

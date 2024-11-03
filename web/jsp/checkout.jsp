@@ -1,14 +1,20 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 
     <head>
         <title>Order</title>
-
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     </head>
 
     <%@ page import="model.*" %>
     <%@ page import="java.util.*"%>
     <%@ page import="java.text.*"%>
 
+    <div>
+        <jsp:include page="header.jsp" />  
+    </div>
+    
     <body>
 
         <h1 class = "bigFont" align="center"><font face="Georgia, Times New Roman, Times, serif">Shopping 
@@ -24,28 +30,24 @@
                     </td>
                 </tr>
 
-                <%
-                    Map items = (Map) session.getAttribute("cart");
-                    Set entries = items.entrySet();
-                    Iterator iter = entries.iterator();
-                    double totalCostOfOrder = 0.00;
-                    Book book = null;
-                    CartItem item = null;
-
-                    while (iter.hasNext()) {
-                        Map.Entry entry = (Map.Entry) iter.next();
-                        item = (CartItem) entry.getValue();
-                        double cost = item.getOrderCost();
-                        totalCostOfOrder += cost;
-                %>
-                <tr>
-                    <td bgcolor="#F0F0F0"><%= item%></td>
-                </tr>
-                <%
-                    } // end while
-                    DecimalFormat dollars = new DecimalFormat("0.00");
-                    String totalOrderInDollars = (dollars.format(totalCostOfOrder));
-                %>  
+                <c:set var="s_cart" value="${sessionScope.cart}"/>
+                <c:choose>
+                <c:when test='${not empty s_cart}'>
+                    <c:forEach var="item" items="${s_cart}">
+                        <c:set var="cartItem" value='${item.value}'/>
+                        <c:set var="cost" value='${cartItem.getOrderCost()}'/>
+                        <c:set var="totalCostOfOrder" value='${totalCostOfOrder + cost}'/>
+                        <tr> 
+                            <td bgcolor="#F0F0F0"><c:out value='${cartItem}'/></td>
+                        </tr>
+                    </c:forEach>                   
+                </c:when>
+                <c:otherwise>
+                        <tr> 
+                            <td height="13">No Items in Cart</td>
+                        </tr>
+                </c:otherwise>
+            </c:choose>  
 
             </table>
 
@@ -124,7 +126,8 @@
                 <tr>
                     <td class = "right bold">Order Amount $</td>
                     <td>
-                        <input type="text" name="amount" value=<%= totalOrderInDollars%> />
+                        <fmt:setLocale value="en_US"/>
+                        <input type="text" name="amount" value='<fmt:formatNumber value="${totalCostOfOrder}" type="currency"/>' />
                     </td>
                 </tr>
             </table>
@@ -132,6 +135,10 @@
             <!-- enable user to submit the form  -->
             <p><input type = "submit" value = "Submit" /></p>
         </form>
+                    
+        <div>
+            <jsp:include page="footer.jsp" />
+        </div>
     </body>
 
 </html>

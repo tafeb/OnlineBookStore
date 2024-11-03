@@ -9,7 +9,11 @@
     <%@ page import="model.*" %>
     <%@ page import="java.util.*"%>
     <%@ page import="java.text.*"%>
-
+    
+    <div>
+        <jsp:include page="header.jsp" />  
+    </div>
+    
     <body bgcolor="#FFFFFF" text="#000000">
         <h2 align="center"><b>The followings Items are in your shopping cart </b></h2>
         <form name="form1" method="post" action="./books">
@@ -86,12 +90,13 @@
                     </c:otherwise>
                 </c:choose>
 
-
-
-
             </table>
         </form>
         <p><a href="./books?action=continue">Continue Shopping</a></p>
         <p><a href="./books?action=checkout">Check Out</a></p>
+        
+        <div>
+            <jsp:include page="footer.jsp" />
+        </div>
     </body>
 </html>
