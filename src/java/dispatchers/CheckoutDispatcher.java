@@ -9,6 +9,6 @@ package dispatchers;
  *
  * @author BR
  */
-public interface CheckoutDispatcher {
+public class CheckoutDispatcher {
     
 }

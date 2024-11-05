@@ -13,5 +13,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface IDispatcher {
     
-    public String execute(HttpServletRequest request, String datasource);
+//    public String execute(HttpServletRequest request, String datasource);
+    public String execute(HttpServletRequest request);
 }

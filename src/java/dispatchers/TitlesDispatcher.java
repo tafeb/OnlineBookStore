@@ -9,6 +9,6 @@ package dispatchers;
  *
  * @author BR
  */
-public interface TitlesDispatcher {
+public class TitlesDispatcher {
     
 }
