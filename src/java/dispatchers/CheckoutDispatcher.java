@@ -5,10 +5,17 @@
  */
 package dispatchers;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  *
  * @author BR
  */
-public class CheckoutDispatcher {
-    
+public class CheckoutDispatcher implements IDispatcher 
+{
+    public String execute(HttpServletRequest request) 
+    {
+        String nextPage = "/jsp/checkout.jsp";
+        return nextPage;
+    }   
 }

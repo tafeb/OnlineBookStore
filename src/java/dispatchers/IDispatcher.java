@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author BR
  */
-public interface IDispatcher {
-    
+public interface IDispatcher 
+{   
 //    public String execute(HttpServletRequest request, String datasource);
     public String execute(HttpServletRequest request);
 }
