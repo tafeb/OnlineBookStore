@@ -15,19 +15,15 @@ import javax.servlet.http.HttpSession;
  */
 public class ViewCartDispatcher implements IDispatcher 
 {
-
     public String execute(HttpServletRequest request) 
     {
         HttpSession session = request.getSession(true);
-        String nextPage = "";
-        nextPage = "/jsp/cart.jsp";
+        String nextPage = "/jsp/cart.jsp";
         Map cart = (Map) session.getAttribute("cart");
         if (cart == null) 
         {
             nextPage = "/jsp/titles.jsp";
         }
-//            this.dispatch(request, response, nextPage);
         return nextPage;
-    }
-    
+    }   
 }

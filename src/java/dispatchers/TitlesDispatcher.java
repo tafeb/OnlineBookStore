@@ -24,10 +24,9 @@ public class TitlesDispatcher implements IDispatcher
     {     
         HttpSession session = request.getSession(true);
         AdmitBookStoreDAO dao = new AdmitBookStoreDAO();
-        String nextPage = "";
         
         List books = null;
-        nextPage = "/jsp/error.jsp";
+        String nextPage = "/jsp/error.jsp";
         session = request.getSession();
         try 
         {
@@ -41,13 +40,6 @@ public class TitlesDispatcher implements IDispatcher
             request.setAttribute("result", ex.getMessage());
             nextPage = "/jsp/error.jsp";
         } 
-//        finally 
-//        {
-//            this.dispatch(request, response, nextPage);
-//        }
-        
-        
         return nextPage;
-    }
-     
+    }   
 }

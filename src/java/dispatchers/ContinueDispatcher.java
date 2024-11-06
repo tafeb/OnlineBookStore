@@ -15,10 +15,7 @@ public class ContinueDispatcher implements IDispatcher
 {
     public String execute(HttpServletRequest request) 
     {
-
-        String nextPage = "";
-        nextPage = "/jsp/titles.jsp";
+        String nextPage = "/jsp/titles.jsp";
         return nextPage;
-    }
-    
+    }  
 }

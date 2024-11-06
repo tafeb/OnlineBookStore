@@ -22,8 +22,7 @@ public class AddToCartDispatcher implements IDispatcher
     public String execute(HttpServletRequest request)
     {
         HttpSession session = request.getSession(true);
-        String nextPage = "";
-        nextPage = "/jsp/titles.jsp";
+        String nextPage = "/jsp/titles.jsp";
 
         Map cart = (Map) session.getAttribute("cart");
         String[] selectedBooks = request.getParameterValues("add");
@@ -61,7 +60,6 @@ public class AddToCartDispatcher implements IDispatcher
                 }
             }
         }
-//        this.dispatch(request, response, nextPage);
         return nextPage;
     }
     

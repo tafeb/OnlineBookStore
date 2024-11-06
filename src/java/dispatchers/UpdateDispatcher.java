@@ -18,16 +18,14 @@ import model.CartItem;
  */
 public class UpdateDispatcher implements IDispatcher 
 {
-
     public String execute(HttpServletRequest request) 
     {
         HttpSession session = request.getSession(true);
-        String nextPage = "";
         
         Map cart = null;
         CartItem item = null;
         String isbn = null;
-        nextPage = "/jsp/cart.jsp";
+        String nextPage = "/jsp/cart.jsp";
         cart = (Map) session.getAttribute("cart");
         String[] booksToRemove = request.getParameterValues("remove");
         if (booksToRemove != null) 
@@ -49,6 +47,5 @@ public class UpdateDispatcher implements IDispatcher
             item.updateQuantity(quantity);
         }
         return nextPage;
-    }
-    
+    }  
 }
