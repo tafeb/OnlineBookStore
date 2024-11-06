@@ -2,6 +2,8 @@ package utility;
 
 import java.util.*;
 import java.sql.*;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 import model.Book;
 
 public class AdmitBookStoreDAO {
@@ -11,10 +13,13 @@ public class AdmitBookStoreDAO {
     public AdmitBookStoreDAO() {
         try {
             // Load the Driver class file
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            System.err.println("Getting Connection!");
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/BooksDB",
-                    "user1", "password");
+//            Class.forName("org.apache.derby.jdbc.ClientDriver");
+//            System.err.println("Getting Connection!");
+//            con = DriverManager.getConnection("jdbc:derby://localhost:1527/BooksDB",
+//                    "user1", "password");
+            InitialContext ctx = new InitialContext();
+            DataSource ds = (DataSource) ctx.lookup("jdbc/BooksDB");
+            con = ds.getConnection();
 
             if (con != null) {
                 System.err.println("Got Connection!");
