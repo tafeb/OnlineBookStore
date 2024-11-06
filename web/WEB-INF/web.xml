@@ -5,14 +5,28 @@
             30
         </session-timeout>
     </session-config>
-     <servlet>
-	<servlet-name>main</servlet-name>
-	<servlet-class>controller.FrontController</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-	<servlet-name>main</servlet-name>
+    <servlet>
+        <servlet-name>main</servlet-name>
+        <servlet-class>controller.FrontController</servlet-class>
+        <init-param>
+            <param-name>url</param-name>
+            <param-value>jdbc:derby://localhost:1527/BooksDB</param-value>
+        </init-param>
+        <init-param>
+            <param-name>driver</param-name>
+            <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>user</param-name>
+            <param-value>user1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>password</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
         <url-pattern>/books</url-pattern>
-  </servlet-mapping>
-
-    </web-app>
+    </servlet-mapping>
+</web-app>
